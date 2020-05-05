@@ -1,0 +1,59 @@
+% https://en.wikibooks.org/wiki/LaTeX/Curriculum_Vitae
+
+\documentclass[10pt,usletter,roman]{moderncv}
+
+%% ModernCV themes
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+%\renewcommand{\familydefault}{\sfdefault}
+\nopagenumbers{}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+
+% Adjust the page margins
+\usepackage[scale=0.75]{geometry}
+
+% Personal data
+\firstname{Christopher}
+\familyname{Patton}
+\title{PhD student in cryptography}
+\email{cjpatton@ufl.edu}
+\homepage{cjpatton.net}
+\extrainfo{\href{https://github.com/cjpatton}{github.com/cjpatton}}
+\photo[64pt][0.4pt]{web/images/head4}
+%\quote{``Sometimes you gotta get in there to get out there.'' -- Joseph D. Sanders}
+
+\begin{document}
+\makecvtitle
+
+\section{Education}
+\cventry{2016--$\infty$}{PhD}{ITEM.meta.inst.uf}{Cryptography}{advised by Tom Shrimpton}{}{}
+\cventry{2013--15}{MS}{ITEM.meta.inst.ucd}{CS}{advised by Nina Amenta}{}{}
+\cventry{2008--13}{BAS}{ITEM.meta.inst.ucd}{CS and German}{}{}{}
+\cvitem{2010--11}{\textit{ITEM.meta.inst.fu}, study abroad.}
+
+\section{Papers}
+LIST.paper(LIT.venue,LIT.what,,LOR.who,LIT.link,)
+
+\section{Experience}
+LIST.job(LIT.when,LIT.what,LIT.where,,,LIT.desc)
+
+\section{Service}
+\cvitem{Paper review}{%
+  \textbf{Conference:} ORDERED.service.review.conf.
+}\cvitem{}{%
+  \textbf{Journal:} ORDERED.service.review.journal.
+}
+
+\section{Awards}
+\cvitem{Grants}{%
+  ORDERED.award.grant.
+}
+\cvitem{Scholarships}{%
+  ORDERED.award.scholarship.
+}
+
+\section{References}
+LIST.ref(--,LIT.who,LIT.where,,\href{mailto:LIT.email}{LIT.email},)
+
+\end{document}

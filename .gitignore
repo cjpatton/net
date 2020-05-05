@@ -1,1 +1,10 @@
 dist
+*.aux
+*.log
+*.out
+*.swp
+*.pdf
+*.pem
+build/
+.DS_Store
+cv.tex

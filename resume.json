@@ -1,0 +1,193 @@
+{
+  "web":
+  {
+    "pdf_blurb":
+    "My <a [CV](cv.pdf) includes contact information, details about my work experience, and professional references. I tweet a little bit ([@cjpatton_](https://twitter.com/cjpatton_)) and I use [GitHub](https://github.com/cjpatton). I'm also on [LinkedIn](https://www.linkedin.com/in/cjpatton).",
+    "code_blurb":
+    "I'm pretty good at Go, C, C++, and Python. I enjoy learning new languages (PL design was my first love in CS)."
+  },
+  "meta":
+  {
+    "where":
+    {
+      "ac": "Asiacrypt",
+      "asiaccs": "AsiaCCS",
+      "ccs": "CCS",
+      "crypto": "Crypto",
+      "ndss": "NDSS",
+      "usenix": "Usenix",
+      "cf_sf": "Cloudflare--SF",
+      "goog_mon": "Google--Montréal",
+      "goog_kir": "Google--Kirkland"
+    },
+    "inst":
+    {
+      "uf": "University of Florida",
+      "ucd": "University of California (Davis)",
+      "fu": "Freie Universität (Berlin)",
+      "jmie": "JMIE"
+    }
+  },
+  "job":
+  [
+    {
+      "what": "Delegated credentials for TLS",
+      "when": "Summer 2018",
+      "where": "Internship at ITEM.meta.where.cf_sf",
+      "desc": "Delegated credentials for TLS is an [extension](https://tools.ietf.org/html/draft-ietf-tls-subcerts-04) that allows an operator to delegate short-lived credentials for terminating connections on its behalf. I implemented the extension for boringSSL, added support to Cloudflare's edge servers, and helped develop the standard. Once browsers adopt it, this extension will make TLS more secure in practice. One problem with short-lived credentials is that client-clock skew limits their effective lifetime. To help address this, I also deployed the [Roughtime](https://roughtime.googlesource.com/roughtime) protocol, which is now [live](https://blog.cloudflare.com/roughtime/)."
+    },
+    {
+      "what": "Malware detection",
+      "when": "Summer 2016",
+      "where": "Internship at ITEM.meta.where.goog_mon",
+      "desc": "I worked on the Chrome Protector team, which is tasked with defending users from malware and other unwanted software. My project took a data-driven approach to detecting malware campaigns in the wild, and involved studying how malicious code gets injected into the browser. I also explored using [Riposte](https://arxiv.org/abs/1503.06115) for anonymous reporting in Chrome."
+    },
+    {
+      "what": "Trustworthy computing",
+      "when": "Summer 2015",
+      "where": "Internship at ITEM.meta.where.goog_kir",
+      "desc": "CloudProxy is an open source project that binds the identity of a service (that is, its public key) to the code that executes it, as well as the environment in which it executes. My project for the Cloud Security team involved bringing this platform to bear on production servers at Google. I also worked on the open source codebase and implemented a [mixnet](https://github.com/jlmucb/cloudproxy/tree/master/go/apps/mixnet) for the platform."
+    },
+    {
+      "what": "QRAAT",
+      "when": "2013--15",
+      "where": "John Muir Institute of the Environment (ITEM.meta.inst.jmie)",
+      "desc": "The Quail Ridge Automated Animal Tracking (QRAAT) system is designed to provide ecologists with high resolution, real-time animal tracking data. It is comprised of a network of radio receivers deployed across the Quail Ridge Nature Reserve in Napa Valley, California, and uses radio telemetry to track species ranging in size from field mice to foxes. My master's project involved developing statistical methods for improving the system's performance."
+    },
+    {
+      "what": "Qurinet",
+      "when": "2012--13",
+      "where": "ITEM.meta.inst.jmie",
+      "desc": "Qurinet is an experimental, wireless, solar-powered mesh network that provides the network infrastructure for the QRAAT project and other monitoring equipment. I was responsible for network administration and site reliability, and I assisted in experiments for the networking lab at UC Davis."
+    }
+  ],
+  "paper":
+  [
+    {
+      "what": "Probabilistic data structures in adversarial environments",
+      "venue": "EVENT(ITEM.meta.where.ccs,2019)",
+      "who": ["D. Clayton", "C. Patton", "T. Shrimpton"]
+    },
+    {
+      "link": "[ia.cr/2019/519](https://ia.cr/2019/519)",
+      "what": "Security in the presence of key reuse: Context-separable interfaces and their applications",
+      "venue": "EVENT(ITEM.meta.where.crypto,2019)",
+      "who" : ["C. Patton", "T. Shrimpton"]
+    },
+    {
+      "what": "A hybrid approach to secure function evaluation using SGX",
+      "venue": "EVENT(ITEM.meta.where.asiaccs,2019)",
+      "who": ["J. Choi", "D. Tian", "G. Hernandez", "C. Patton", "B. Mood", "T. Shrimpton", "K. Butler", "P. Traynor"]
+    },
+    {
+      "what": "Digital healthcare-associated infection: A case study on the security of a major multi-campus hospital system",
+      "who": ["L. Vargas", "L. Blue", "V. Frost", "C. Patton", "N. Scaife", "K. Butler", "P. Traynor"],
+      "venue": "EVENT(ITEM.meta.where.ndss,2019)"
+    },
+    {
+      "link": "[ia.cr/2018/634](https://ia.cr/2018/634)",
+      "what": "Partially specified channels: The TLS 1.3 record layer without elision",
+      "venue": "EVENT(ITEM.meta.where.ccs,2018)",
+      "who": ["C. Patton", "T. Shrimpton"]
+    },
+    {
+      "link": "[ia.cr/2017/510](https://ia.cr/2017/510)",
+      "what": "Hedging public-key encryption in the real world",
+      "venue": "EVENT(ITEM.meta.where.crypto,2017)",
+      "who": ["A. Boldyreva", "C. Patton", "T. Shrimpton"]
+    }
+  ],
+  "talk":
+  [
+    {
+      "what": "Partially specified channels",
+      "venue": "EVENT(ITEM.meta.where.ccs,2018)",
+      "link": "[YouTube](https://youtu.be/LBrXgjm73-c)"
+    },
+    {
+      "what": "Hedging public-key encryption in the real world",
+      "venue": "EVENT(ITEM.meta.where.crypto,2017)",
+      "link": "[YouTube](https://youtu.be/FhIvgnomUy4)"
+    }
+  ],
+  "code":
+  [
+    {
+      "what": "Delegated credentials for TLS",
+      "link": "[boringSSL server](https://boringssl.googlesource.com/boringssl/+/6c1b376e1d502eff365028fe054115f1b46d19b5) / [NSS client](https://hg.mozilla.org/projects/nss/rev/4af0d6f452111f7b3ba3cc21917ddd62aaf2222e)",
+      "desc": "A protocol extension ([draft-ietf-tls-subcerts](https://tools.ietf.org/html/draft-ietf-tls-subcerts)) that allows a TLS operator to delegate credentials for terminating connections on its behalf."
+    },
+    {
+      "what": "Roughtime",
+      "link": "[roughtime](https://github.com/cloudflare/roughtime)",
+      "desc": "A simple protocol for synchronizing clocks with enough accuracy for common cryptographic applications. I deployed the [server](https://blog.cloudflare.com/roughtime/) on Cloudflare's infrastructure during my internship."
+    },
+    {
+      "what": "Oblivious Go maps",
+      "link": "[store](https://github.com/cjpatton/store)",
+      "desc": "A wacky idea for password management."
+    },
+    {
+      "what": "Online AES-GCM",
+      "link": "[sgcm](https://github.com/cjpatton/sgcm)",
+      "desc": "Improvements to Go's implementation of AES-GCM."
+    },
+    {
+      "what": "AEZ",
+      "link": "[aez](https://github.com/cjpatton/aez)",
+      "desc": "An implementation of the AEZv3 robust authenticated encryption scheme."
+    }
+  ],
+  "service":
+  {
+    "review":
+    {
+      "conf": [
+        "EVENT(ITEM.meta.where.ac,2016)",
+        "EVENT(ITEM.meta.where.usenix,2017)",
+        "EVENT(ITEM.meta.where.crypto,2019)"
+      ],
+      "journal": [
+        "TDSC Vol. 15, No. 5"
+      ]
+    }
+  },
+  "award":
+  {
+    "grant": [
+      "NSF: SaTC: CORE: Small: API-centric Cryptography (CNS-1816375)"
+    ],
+    "scholarship": [
+      "Benjamin A. Gilman International Scholarship Program, 2010"
+    ]
+  },
+  "ref":
+  [
+    {
+      "who": "Nick Sullivan",
+      "email": "nick@cloudflare.com",
+      "where": "ITEM.meta.where.cf_sf"
+    },
+    {
+      "who": "Tom Roeder",
+      "email": "tmroeder@google.com",
+      "where": "ITEM.meta.where.goog_kir"
+    },
+    {
+      "who": "Cait Phillips",
+      "email": "caitkp@google.com",
+      "where": "ITEM.meta.where.goog_mon"
+    },
+    {
+      "who": "Marcel Losekoot",
+      "email": "mlosekoot@ucdavis.edu",
+      "where": "ITEM.meta.inst.jmie"
+    }
+  ],
+  "self":
+  {
+    "intro": "I am a PhD student in cryptography advised by [Tom Shrimpton](http://cise.ufl.edu/~teshrim/new-homepage.html). I work for the Florida Institute for Cybersecurity Research (FICS) at the University of Florida. My work focuses on the limits of the provable security methodology as it pertains to real-world cryptosystems and protocols.",
+    "history": "I began my crypto education with [Phil Rogaway](http://web.cs.ucdavis.edu/~rogaway/) at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).",
+    "fun": "I love to run, make music, and drink coffee. My favorite book is Ishmael by Daniel Quinn."
+  }
+}

@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <style>
+      div.main {
+        max-width:800px;
+        margin: auto;
+      }
+
+      /* unvisited link */
+      a:link {
+        color: #b1c4d5;
+        text-decoration: none;
+        background-color: #253542;
+      }
+
+      /* visited link */
+      a:visited {
+        color: #b1c4d5;
+        text-decoration: none;
+        background-color: #253542;
+      }
+
+      /* mouse over link */
+      a:hover {
+        color: #b1c4d5;
+        text-decoration: none;
+        background-color: #60788c;
+      }
+k
+      /* selected link */
+      a:active {
+        color: #b1c4d5;
+        text-decoration: none;
+        background-color: #60788c;
+      }
+    </style>
+  </head>
+  <body bgcolor="#181c1e" text="#d7d0bb">
+    <div class="main">
+      <h1>Christopher Patton</h1>
+      <table cellspacing="16px">
+        <tr>
+          <td valign="top">
+            <img src="images/head4.jpg" width="200px">
+          </td>
+          <td valign="top">
+            <p>
+              ITEM.self.intro
+            </p>
+            <p>
+              ITEM.self.history
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        ITEM.web.pdf_blurb
+      </p>
+
+      <h2>Papers</h2>
+  LIST.paper(    ,LIT.what,(LIT.link),LOR.who,LIT.venue,)
+
+      <h2>Code</h2>
+  ITEM.web.code_blurb
+  LIST.code(    ,LIT.what,(LIT.link),,LIT.desc,)
+
+      <h2>Talks</h2>
+  LIST.talk(    ,LIT.what,(LIT.venue),,Available on LIT.link.,)
+    </div>
+  </body>
+</html>
