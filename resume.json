@@ -1,11 +1,4 @@
 {
-  "web":
-  {
-    "pdf_blurb":
-    "My <a [CV](cv.pdf) includes contact information, details about my work experience, and professional references. I tweet a little bit ([@cjpatton_](https://twitter.com/cjpatton_)) and I use [GitHub](https://github.com/cjpatton). I'm also on [LinkedIn](https://www.linkedin.com/in/cjpatton).",
-    "code_blurb":
-    "I'm pretty good at Go, C, C++, and Python. I enjoy learning new languages (PL design was my first love in CS)."
-  },
   "meta":
   {
     "where":
@@ -145,7 +138,9 @@
       "conf": [
         "EVENT(ITEM.meta.where.ac,2016)",
         "EVENT(ITEM.meta.where.usenix,2017)",
-        "EVENT(ITEM.meta.where.crypto,2019)"
+        "EVENT(ITEM.meta.where.crypto,2019)",
+        "EVENT(ITEM.meta.where.crypto,2020)",
+        "EVENT(ITEM.meta.where.ccs,2020)"
       ],
       "journal": [
         "TDSC Vol. 15, No. 5"

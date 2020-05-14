@@ -26,7 +26,7 @@
         text-decoration: none;
         background-color: #60788c;
       }
-k
+
       /* selected link */
       a:active {
         color: #b1c4d5;
@@ -44,25 +44,40 @@ k
             <img src="img/head4.jpg" width="200px">
           </td>
           <td valign="top">
-            <p>
-              ITEM.self.intro
-            </p>
-            <p>
-              ITEM.self.history
-            </p>
+            <ul>
+              <li>
+                <a href="https://www.cjpatton.net/cv.pdf">CV</a>
+              </li>
+              <li>
+                <a href="https://twitter.com/cjpatton_">Twitter</a>
+              </li>
+              <li>
+                <a href="https://github.com/cjpatton">GitHub</a>
+              </li>
+              <li>
+                <a href="https://keybase.io/cjpatton">Keybase</a>
+                (WIP)
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/cjpatton">LinkedIn</a>
+              </li>
+            </ul>
           </td>
         </tr>
       </table>
 
       <p>
-        ITEM.web.pdf_blurb
+        ITEM.self.intro
+      </p>
+
+      <p>
+        ITEM.self.history
       </p>
 
       <h2>Papers</h2>
   LIST.paper(    ,LIT.what,(LIT.link),LOR.who,LIT.venue,)
 
       <h2>Code</h2>
-  ITEM.web.code_blurb
   LIST.code(    ,LIT.what,(LIT.link),,LIT.desc,)
 
       <h2>Talks</h2>

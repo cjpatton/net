@@ -26,7 +26,7 @@
         text-decoration: none;
         background-color: #60788c;
       }
-k
+
       /* selected link */
       a:active {
         color: #b1c4d5;
@@ -44,18 +44,34 @@ k
             <img src="img/head4.jpg" width="200px">
           </td>
           <td valign="top">
-            <p>
-              I am a PhD student in cryptography advised by <a href="http://cise.ufl.edu/~teshrim/new-homepage.html" target="_blank">Tom Shrimpton</a>. I work for the Florida Institute for Cybersecurity Research (FICS) at the University of Florida. My work focuses on the limits of the provable security methodology as it pertains to real-world cryptosystems and protocols.
-            </p>
-            <p>
-              I began my crypto education with <a href="http://web.cs.ucdavis.edu/~rogaway/" target="_blank">Phil Rogaway</a> at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).
-            </p>
+            <ul>
+              <li>
+                <a href="https://www.cjpatton.net/cv.pdf">CV</a>
+              </li>
+              <li>
+                <a href="https://twitter.com/cjpatton_">Twitter</a>
+              </li>
+              <li>
+                <a href="https://github.com/cjpatton">GitHub</a>
+              </li>
+              <li>
+                <a href="https://keybase.io/cjpatton">Keybase</a>
+                (WIP)
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/cjpatton">LinkedIn</a>
+              </li>
+            </ul>
           </td>
         </tr>
       </table>
 
       <p>
-        My <a <a href="cv.pdf" target="_blank">CV</a> includes contact information, details about my work experience, and professional references. I tweet a little bit (<a href="https://twitter.com/cjpatton_" target="_blank">@cjpatton_</a>) and I use <a href="https://github.com/cjpatton" target="_blank">GitHub</a>. I'm also on <a href="https://www.linkedin.com/in/cjpatton" target="_blank">LinkedIn</a>.
+        I am a PhD student in cryptography advised by <a href="http://cise.ufl.edu/~teshrim/new-homepage.html" target="_blank">Tom Shrimpton</a>. I work for the Florida Institute for Cybersecurity Research (FICS) at the University of Florida. My work focuses on the limits of the provable security methodology as it pertains to real-world cryptosystems and protocols.
+      </p>
+
+      <p>
+        I began my crypto education with <a href="http://web.cs.ucdavis.edu/~rogaway/" target="_blank">Phil Rogaway</a> at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).
       </p>
 
       <h2>Papers</h2>
@@ -69,7 +85,6 @@ k
     </ul>
 
       <h2>Code</h2>
-  I'm pretty good at Go, C, C++, and Python. I enjoy learning new languages (PL design was my first love in CS).
       <ul>
       <li><b>Delegated credentials for TLS</b> (<a href="https://boringssl.googlesource.com/boringssl/+/6c1b376e1d502eff365028fe054115f1b46d19b5" target="_blank">boringSSL server</a> / <a href="https://hg.mozilla.org/projects/nss/rev/4af0d6f452111f7b3ba3cc21917ddd62aaf2222e" target="_blank">NSS client</a>). A protocol extension (<a href="https://tools.ietf.org/html/draft-ietf-tls-subcerts" target="_blank">draft-ietf-tls-subcerts</a>) that allows a TLS operator to delegate credentials for terminating connections on its behalf.</li>
       <li><b>Roughtime</b> (<a href="https://github.com/cloudflare/roughtime" target="_blank">roughtime</a>). A simple protocol for synchronizing clocks with enough accuracy for common cryptographic applications. I deployed the <a href="https://blog.cloudflare.com/roughtime/" target="_blank">server</a> on Cloudflare's infrastructure during my internship.</li>
