@@ -57,6 +57,12 @@
   "paper":
   [
     {
+      "link": "[ia.cr/2020/573](https://ia.cr/2020/573)",
+      "what": "Quantifying the security cost of migrating protocols to practice",
+      "venue": "EVENT(ITEM.meta.where.crypto,2020)",
+      "who" : ["C. Patton", "T. Shrimpton"]
+    },
+    {
       "what": "Probabilistic data structures in adversarial environments",
       "venue": "EVENT(ITEM.meta.where.ccs,2019)",
       "who": ["D. Clayton", "C. Patton", "T. Shrimpton"]
