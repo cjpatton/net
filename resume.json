@@ -10,6 +10,7 @@
       "ndss": "NDSS",
       "usenix": "Usenix",
       "cf_sf": "Cloudflare--SF",
+      "ssr": "SSR",
       "goog_mon": "Google--Montréal",
       "goog_kir": "Google--Kirkland"
     },
@@ -99,6 +100,11 @@
   "talk":
   [
     {
+      "what": "Interpretation of Provable Security for Cryptographic Practice",
+      "venue": "PhD defense, delivered via Zoom",
+      "link": "[YouTube](https://youtu.be/rHf7ssQf77U)"
+    },
+    {
       "what": "Partially specified channels",
       "venue": "EVENT(ITEM.meta.where.ccs,2018)",
       "link": "[YouTube](https://youtu.be/LBrXgjm73-c)"
@@ -139,6 +145,10 @@
   ],
   "service":
   {
+    "pc":
+    [
+      "EVENT(ITEM.meta.where.ssr (\"Secure Standardisation Research\"),2020)"
+    ],
     "review":
     {
       "conf": [
@@ -187,8 +197,8 @@
   ],
   "self":
   {
-    "intro": "I am a PhD student in cryptography advised by [Tom Shrimpton](http://cise.ufl.edu/~teshrim/new-homepage.html). I work for the Florida Institute for Cybersecurity Research (FICS) at the University of Florida. My work focuses on the limits of the provable security methodology as it pertains to real-world cryptosystems and protocols.",
-    "history": "I began my crypto education with [Phil Rogaway](http://web.cs.ucdavis.edu/~rogaway/) at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).",
+    "intro": "Currently transitioning into a new role ([Cloudflare Research](https://blog.cloudflare.com/cloudflares-approach-to-research/)).",
+    "history": "I recently (June 2020) completed my PhD under the guidance of [Tom Shrimpton](http://cise.ufl.edu/~teshrim/new-homepage.html) at the University of Florida. I began my crypto education with [Phil Rogaway](http://web.cs.ucdavis.edu/~rogaway/) at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).",
     "fun": "I love to run, make music, and drink coffee. My favorite book is Ishmael by Daniel Quinn."
   }
 }
