@@ -25,6 +25,12 @@
   "job":
   [
     {
+      "what": "Cloudflare Research",
+      "when": "2020---$\\infty$",
+      "where": "ITEM.meta.where.cf_sf",
+      "desc": "I'm currently working on a variety of applied cryptography projects."
+    },
+    {
       "what": "Delegated credentials for TLS",
       "when": "Summer 2018",
       "where": "Internship at ITEM.meta.where.cf_sf",
@@ -197,8 +203,8 @@
   ],
   "self":
   {
-    "intro": "Currently transitioning into a new role at [Cloudflare Research](https://blog.cloudflare.com/cloudflares-approach-to-research/).",
-    "history": "I recently (June 2020) completed my PhD in cryptography under the guidance of [Tom Shrimpton](http://cise.ufl.edu/~teshrim/new-homepage.html) at the University of Florida. I began my crypto education with [Phil Rogaway](http://web.cs.ucdavis.edu/~rogaway/) at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).",
+    "intro": "I work on applied cryptography at [Cloudflare Research](https://blog.cloudflare.com/cloudflares-approach-to-research/).",
+    "history": "I finished my PhD in 2020 under [Tom Shrimpton](http://cise.ufl.edu/~teshrim/new-homepage.html) at the University of Florida. My thesis is [here](https://cjpatton.net/thesis.pdf). (Click [here](https://ufdcimages.uflib.ufl.edu/UF/E0/05/66/19/00001/Patton_C.pdf) for the official version.) I began my crypto education with [Phil Rogaway](http://web.cs.ucdavis.edu/~rogaway/) at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).",
     "fun": "I love to run, make music, and drink coffee. My favorite book is Ishmael by Daniel Quinn."
   }
 }
