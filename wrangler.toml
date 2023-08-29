@@ -2,9 +2,8 @@ name = "cjpatton-net"
 type = "webpack"
 account_id = "50c027d4c47ecd030cbe62f150541238"
 workers_dev = false
-route = "*cjpatton.net/*"
-zone_id = "c705da269e111abf41fc42bdc29d63fd"
 compatibility_date = "2022-07-17"
+route = { pattern = "*cjpatton.net/*", zone_id = "c705da269e111abf41fc42bdc29d63fd" }
 
 [site]
 bucket = "./public"
