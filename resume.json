@@ -8,9 +8,11 @@
       "ccs": "CCS",
       "crypto": "Crypto",
       "ndss": "NDSS",
+      "pets": "PETS",
       "usenix": "Usenix",
       "cf_sf": "Cloudflare--SF",
       "ssr": "SSR",
+      "rwc": "RWC",
       "goog_mon": "Google--Montréal",
       "goog_kir": "Google--Kirkland"
     },
@@ -28,7 +30,7 @@
       "what": "Cloudflare Research",
       "when": "2020---$\\infty$",
       "where": "ITEM.meta.where.cf_sf",
-      "desc": "I'm currently working on a variety of applied cryptography projects."
+      "desc": "ITEM.self.intro"
     },
     {
       "what": "Delegated credentials for TLS",
@@ -63,6 +65,18 @@
   ],
   "paper":
   [
+    {
+      "link": "[ia.cr/2023/130](https://eprint.iacr.org/2023/130)",
+      "what": "Verifiable Distributed Aggregation Functions",
+      "venue": "EVENT(ITEM.meta.where.pets,2023)",
+      "who": ["H. Davis", "C. Patton", "M. Rosulek", "P. Schoppmann"]
+    },
+    {
+      "link": "[10.1145/3488932](https://dl.acm.org/doi/abs/10.1145/3488932.3497756)",
+      "what": "SMS OTP Security (SOS): Hardening SMS-Based Two Factor Authentication",
+      "venue": "EVENT(ITEM.meta.where.asiaccs,2022)",
+      "who": ["C. Peeters", "C. Patton", "I. Munyaka", "D. Olszewski", "T. Shrimpton", "P. Traynor"]
+    },
     {
       "link": "[ia.cr/2020/573](https://ia.cr/2020/573)",
       "what": "Quantifying the security cost of migrating protocols to practice",
@@ -106,6 +120,16 @@
   "talk":
   [
     {
+      "what": "Standardizing MPC for Privacy-preserving Measurement",
+      "venue": "EVENT(ITEM.meta.where.rwc,2022)",
+      "link": "[YouTube](https://youtu.be/dOAMi_uFv_Y?si=4XdLSOPWNcm9PF4h&t=1677). Please forgive the terrible recording. There was an AV issue during my talk, the result of which is only the Zoom recording survived"
+    },
+    {
+      "what": "Quantifying the Security Cost of Migrating Protocols to Practice",
+      "venue": "EVENT(ITEM.meta.where.crypto,2020)",
+      "link": "[YouTube](https://www.youtube.com/watch?v=AGXE-AFt4is), prerecorded"
+    },
+    {
       "what": "Interpretation of Provable Security for Cryptographic Practice",
       "venue": "PhD defense, delivered via Zoom",
       "link": "[YouTube](https://youtu.be/rHf7ssQf77U)"
@@ -121,39 +145,54 @@
       "link": "[YouTube](https://youtu.be/FhIvgnomUy4)"
     }
   ],
+  "draft":
+  [
+    {
+      "what": "Verifiable Distributed Aggregation Functions",
+      "link": "[draft-irtf-cfrg-vdaf](https://datatracker.ietf.org/doc/draft-irtf-cfrg-vdaf/)",
+      "who": ["R. Barnes", "D. Cook", "C. Patton", "P. Schoppmann"]
+    },
+    {
+      "what": "Distributed Aggregation Protocol for Privacy Preserving Measurement ",
+      "link": "[draft-ietf-ppm-dap](https://datatracker.ietf.org/doc/draft-ietf-ppm-dap/)",
+      "who": ["T. Geoghegan", "C. Patton", "E. Rescorla", "C. Wood"]
+    }
+  ],
   "code":
   [
     {
+      "what": "VDAF",
+      "link": "[prio](https://github.com/divviup/libprio-rs)",
+      "desc": "Rust implementations of the Verifiable Distributed Aggregation Functions specification. While I am not the maintainer of this crate, I have contributed a ton of code, including the FLP implementation."
+    },
+    {
+      "what": "DAP",
+      "link": "[daphne](https://github.com/cloudflare/daphne)",
+      "desc": "Rust implementation of the Distributed Aggregation Protocol specification, targeting the [Cloudflare Workers](https://workers.cloudflare.com/) for deployement. Still a work-in-progress."
+    },
+    {
+      "what": "TLS Encrypted Client Hello",
+      "link": "[cloudflare/go](https://github.com/cloudflare/go)",
+      "desc": "Cloudflare Research maintains a fork of the Go standard library in order to facilitate experiments. I contributed a significant amount of code to this library, including its implementation of the Encrypted Client Hello extension for TLS ([draft-ietf-tls-esni](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/))."
+    },
+    {
       "what": "Delegated credentials for TLS",
       "link": "[boringSSL server](https://boringssl.googlesource.com/boringssl/+/6c1b376e1d502eff365028fe054115f1b46d19b5) / [NSS client](https://hg.mozilla.org/projects/nss/rev/4af0d6f452111f7b3ba3cc21917ddd62aaf2222e)",
-      "desc": "A protocol extension ([draft-ietf-tls-subcerts](https://tools.ietf.org/html/draft-ietf-tls-subcerts)) that allows a TLS operator to delegate credentials for terminating connections on its behalf."
+      "desc": "A protocol extension ([RFC9345](https://datatracker.ietf.org/doc/html/rfc9345)) that allows a TLS operator to delegate credentials for terminating connections on its behalf."
     },
     {
       "what": "Roughtime",
       "link": "[roughtime](https://github.com/cloudflare/roughtime)",
       "desc": "A simple protocol for synchronizing clocks with enough accuracy for common cryptographic applications. I deployed the [server](https://blog.cloudflare.com/roughtime/) on Cloudflare's infrastructure during my internship."
-    },
-    {
-      "what": "Oblivious Go maps",
-      "link": "[store](https://github.com/cjpatton/store)",
-      "desc": "A wacky idea for password management."
-    },
-    {
-      "what": "Online AES-GCM",
-      "link": "[sgcm](https://github.com/cjpatton/sgcm)",
-      "desc": "Improvements to Go's implementation of AES-GCM."
-    },
-    {
-      "what": "AEZ",
-      "link": "[aez](https://github.com/cjpatton/aez)",
-      "desc": "An implementation of the AEZv3 robust authenticated encryption scheme."
     }
   ],
   "service":
   {
     "pc":
     [
-      "EVENT(ITEM.meta.where.ssr (\"Secure Standardisation Research\"),2020)"
+      "EVENT(ITEM.meta.where.ssr (\"Secure Standardisation Research\"),2020)",
+      "EVENT(ITEM.meta.where.ssr,2022)",
+      "EVENT(ITEM.meta.where.ssr,2023)"
     ],
     "review":
     {
@@ -203,8 +242,8 @@
   ],
   "self":
   {
-    "intro": "I work on applied cryptography at [Cloudflare Research](https://blog.cloudflare.com/cloudflares-approach-to-research/).",
-    "history": "I finished my PhD in 2020 under [Tom Shrimpton](http://cise.ufl.edu/~teshrim/new-homepage.html) at the University of Florida. I began my crypto education with [Phil Rogaway](http://web.cs.ucdavis.edu/~rogaway/) at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).",
+    "intro": "I work on applied cryptography at [Cloudflare Research](https://research.cloudflare.com/). Most of my work also takes place in the IETF: I contributed to the design of the [Encrypted Client Hello extension for TLS](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/); I participate in the [CFRG research group](https://irtf.org/cfrg); and I'm leading a significant amount of work in the [PPM working group](https://datatracker.ietf.org/group/ppm/about/), which aims to bring MPC to bear on user measurement.",
+    "history": "I finished my PhD in 2020 under [Tom Shrimpton](http://cise.ufl.edu/~teshrim/new-homepage.html) at the University of Florida. My thesis focused on bridging the gap between the proven security of cryptographic protocols and their security in the real world. I began my crypto education with [Phil Rogaway](http://web.cs.ucdavis.edu/~rogaway/) at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).",
     "fun": "I love to run, make music, and drink coffee. My favorite book is Ishmael by Daniel Quinn."
   }
 }

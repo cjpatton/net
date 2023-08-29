@@ -19,7 +19,7 @@ LOR_prog = re.compile("LOR%s" % KEY_re)
 ORDERED_prog = re.compile("ORDERED%s" % KEY_re)
 
 ## Parsers
-class Err:
+class Err(BaseException):
     def __init__(self, S):
         self.S = S
     def __str__(self):
@@ -66,7 +66,7 @@ def parseArgs(S, expectedCount):
             for i in range(len(arg_ends)-1):
                 args.append(S[arg_ends[i]:arg_ends[i+1]-1])
             if len(args) != expectedCount:
-                err("unexpected %s arguments, got %s" % (
+                err("expected %s arguments, got %s" % (
                     expectedCount, len(args)))
             return args, idx
     err("syntax: missing right paranthesis")
@@ -237,4 +237,4 @@ for m in reversed(list(MDLINK_prog.finditer(I))):
 # Post processing
 I = e.Post(I)
 
-open(out_fn, 'w').write(I.encode('utf8'))
+open(out_fn, 'w').write(I)
