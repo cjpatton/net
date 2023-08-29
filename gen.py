@@ -77,6 +77,8 @@ def ordered(val):
         return ''
     elif len(val) == 1:
         return val[0]
+    elif len(val) == 2:
+        return '%s and %s' % (val[0], val[1])
     else:
         expanded = ''
         for it in val[:-1]:

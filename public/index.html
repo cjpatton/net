@@ -76,12 +76,12 @@
       <ul>
       <li><b>Verifiable Distributed Aggregation Functions</b> (<a href="https://eprint.iacr.org/2023/130" target="_blank">ia.cr/2023/130</a>). H. Davis, C. Patton, M. Rosulek, and P. Schoppmann. PETS 2023.</li>
       <li><b>SMS OTP Security (SOS): Hardening SMS-Based Two Factor Authentication</b> (<a href="https://dl.acm.org/doi/abs/10.1145/3488932.3497756" target="_blank">10.1145/3488932</a>). C. Peeters, C. Patton, I. Munyaka, D. Olszewski, T. Shrimpton, and P. Traynor. AsiaCCS 2022.</li>
-      <li><b>Quantifying the security cost of migrating protocols to practice</b> (<a href="https://ia.cr/2020/573" target="_blank">ia.cr/2020/573</a>). C. Patton, and T. Shrimpton. Crypto 2020.</li>
+      <li><b>Quantifying the security cost of migrating protocols to practice</b> (<a href="https://ia.cr/2020/573" target="_blank">ia.cr/2020/573</a>). C. Patton and T. Shrimpton. Crypto 2020.</li>
       <li><b>Probabilistic data structures in adversarial environments</b>. D. Clayton, C. Patton, and T. Shrimpton. CCS 2019.</li>
-      <li><b>Security in the presence of key reuse: Context-separable interfaces and their applications</b> (<a href="https://ia.cr/2019/519" target="_blank">ia.cr/2019/519</a>). C. Patton, and T. Shrimpton. Crypto 2019.</li>
+      <li><b>Security in the presence of key reuse: Context-separable interfaces and their applications</b> (<a href="https://ia.cr/2019/519" target="_blank">ia.cr/2019/519</a>). C. Patton and T. Shrimpton. Crypto 2019.</li>
       <li><b>A hybrid approach to secure function evaluation using SGX</b>. J. Choi, D. Tian, G. Hernandez, C. Patton, B. Mood, T. Shrimpton, K. Butler, and P. Traynor. AsiaCCS 2019.</li>
       <li><b>Digital healthcare-associated infection: A case study on the security of a major multi-campus hospital system</b>. L. Vargas, L. Blue, V. Frost, C. Patton, N. Scaife, K. Butler, and P. Traynor. NDSS 2019.</li>
-      <li><b>Partially specified channels: The TLS 1.3 record layer without elision</b> (<a href="https://ia.cr/2018/634" target="_blank">ia.cr/2018/634</a>). C. Patton, and T. Shrimpton. CCS 2018.</li>
+      <li><b>Partially specified channels: The TLS 1.3 record layer without elision</b> (<a href="https://ia.cr/2018/634" target="_blank">ia.cr/2018/634</a>). C. Patton and T. Shrimpton. CCS 2018.</li>
       <li><b>Hedging public-key encryption in the real world</b> (<a href="https://ia.cr/2017/510" target="_blank">ia.cr/2017/510</a>). A. Boldyreva, C. Patton, and T. Shrimpton. Crypto 2017.</li>
     </ul>
 
@@ -94,7 +94,7 @@
       <h2>Code</h2>
       <ul>
       <li><b>VDAF</b> (<a href="https://github.com/divviup/libprio-rs" target="_blank">prio</a>). Rust implementations of the Verifiable Distributed Aggregation Functions specification. While I am not the maintainer of this crate, I have contributed a ton of code, including the FLP implementation.</li>
-      <li><b>DAP</b> (<a href="https://github.com/cloudflare/daphne" target="_blank">daphne</a>). Rust implementation of the Distributed Aggregation Protocol specification, targeting the <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> for deployement. Still a work-in-progress.</li>
+      <li><b>DAP</b> (<a href="https://github.com/cloudflare/daphne" target="_blank">daphne</a>). Rust implementation of the Distributed Aggregation Protocol specification, targeting the <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> platform. Still a work-in-progress.</li>
       <li><b>TLS Encrypted Client Hello</b> (<a href="https://github.com/cloudflare/go" target="_blank">cloudflare/go</a>). Cloudflare Research maintains a fork of the Go standard library in order to facilitate experiments. I contributed a significant amount of code to this library, including its implementation of the Encrypted Client Hello extension for TLS (<a href="https://datatracker.ietf.org/doc/draft-ietf-tls-esni/" target="_blank">draft-ietf-tls-esni</a>).</li>
       <li><b>Delegated credentials for TLS</b> (<a href="https://boringssl.googlesource.com/boringssl/+/6c1b376e1d502eff365028fe054115f1b46d19b5" target="_blank">boringSSL server</a> / <a href="https://hg.mozilla.org/projects/nss/rev/4af0d6f452111f7b3ba3cc21917ddd62aaf2222e" target="_blank">NSS client</a>). A protocol extension (<a href="https://datatracker.ietf.org/doc/html/rfc9345" target="_blank">RFC9345</a>) that allows a TLS operator to delegate credentials for terminating connections on its behalf.</li>
       <li><b>Roughtime</b> (<a href="https://github.com/cloudflare/roughtime" target="_blank">roughtime</a>). A simple protocol for synchronizing clocks with enough accuracy for common cryptographic applications. I deployed the <a href="https://blog.cloudflare.com/roughtime/" target="_blank">server</a> on Cloudflare's infrastructure during my internship.</li>

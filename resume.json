@@ -122,7 +122,7 @@
     {
       "what": "Standardizing MPC for Privacy-preserving Measurement",
       "venue": "EVENT(ITEM.meta.where.rwc,2022)",
-      "link": "[YouTube](https://youtu.be/dOAMi_uFv_Y?si=4XdLSOPWNcm9PF4h&t=1677). Please forgive the terrible recording. There was an AV issue during my talk, the result of which is only the Zoom recording survived"
+      "link": "[YouTube](https://youtu.be/dOAMi_uFv_Y?si=4XdLSOPWNcm9PF4h&t=1677). Please forgive the terrible recording. There was an AV issue during our session, the result of which is that only the Zoom recording survived"
     },
     {
       "what": "Quantifying the Security Cost of Migrating Protocols to Practice",
@@ -168,7 +168,7 @@
     {
       "what": "DAP",
       "link": "[daphne](https://github.com/cloudflare/daphne)",
-      "desc": "Rust implementation of the Distributed Aggregation Protocol specification, targeting the [Cloudflare Workers](https://workers.cloudflare.com/) for deployement. Still a work-in-progress."
+      "desc": "Rust implementation of the Distributed Aggregation Protocol specification, targeting the [Cloudflare Workers](https://workers.cloudflare.com/) platform. Still a work-in-progress."
     },
     {
       "what": "TLS Encrypted Client Hello",
