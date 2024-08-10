@@ -2,9 +2,11 @@
 
 \documentclass[10pt,usletter,roman]{moderncv}
 
+%\definecolor{thedarkgreen}{RGB}{30,97,0}
+
 %% ModernCV themes
-\moderncvstyle{classic}
-\moderncvcolor{blue}
+\moderncvstyle{casual}
+\moderncvcolor{green}
 %\renewcommand{\familydefault}{\sfdefault}
 \nopagenumbers{}
 \usepackage[utf8]{inputenc}
@@ -16,10 +18,10 @@
 % Personal data
 \firstname{Christopher}
 \familyname{Patton}
-\title{Cryptography engineer}
-\email{chrispatton+cv@gmail.com}
+\title{Cryptography engineering$\iff$research}
 \homepage{cjpatton.net}
 \extrainfo{\href{https://github.com/cjpatton}{github.com/cjpatton}}
+\email{chrispatton+cv@gmail.com}
 \photo[64pt][0.4pt]{public/img/head4}
 %\quote{``Sometimes you gotta get in there to get out there.'' -- Joseph D. Sanders}
 
@@ -38,7 +40,7 @@ LIST.paper(LIT.venue,LIT.what,,LOR.who,LIT.link,)
 \section{Internet-Drafts}
 LIST.draft(,LIT.what,,LOR.who,LIT.link,)
 
-\break
+%\break
 \section{Experience}
 LIST.job(LIT.when,LIT.what,LIT.where,,,LIT.desc)
 

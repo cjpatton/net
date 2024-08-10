@@ -4,9 +4,11 @@
     "where":
     {
       "ac": "Asiacrypt",
+      "ascrypto": "ASCrypto",
       "asiaccs": "AsiaCCS",
       "ccs": "CCS",
       "crypto": "Crypto",
+      "ec": "Eurocrypt",
       "latincrypt": "Latincrypt",
       "ndss": "NDSS",
       "pets": "PETS",
@@ -67,6 +69,12 @@
   "paper":
   [
     {
+      "link": "[ia.cr/2024/221](https://eprint.iacr.org/2024/221)",
+      "what": "Mastic: Private Weighted Heavy-Hitters and Attribute-Based Metrics",
+      "venue": "EVENT(ITEM.meta.where.pets,2025)",
+      "who": ["D. Mouris", "C. Patton", "H. Davis", "P. Sarkar", "N. Tsoutsos"]
+    },
+    {
       "link": "[ia.cr/2023/130](https://eprint.iacr.org/2023/130)",
       "what": "Verifiable Distributed Aggregation Functions",
       "venue": "EVENT(ITEM.meta.where.pets,2023)",
@@ -121,9 +129,19 @@
   "talk":
   [
     {
+      "what": "How to write proofs for cryptographic protocols at IETF",
+      "venue": "Usable Formal Methods Research Group, IETF 120",
+      "link": "[YouTube](https://youtu.be/xdJm9JgfLaw?si=sGU_fl6zV4IOQCgE&t=4797)"
+    },
+    {
+      "what": "Computing on your data with MPC",
+      "venue": "Cryptographic Applications Workshop, co-located with EVENT(ITEM.meta.where.ec,2024)",
+      "link": "[Slides](https://caw.cryptanalysis.fun/assets/pdf/Computing_on_your_data_with_MPC_Chris_Patton.pdf)"
+    },
+    {
       "what": "MPC for Privacy Preserving Measurement",
-      "venue": "EVENT(ITEM.meta.where.latincrypt,2023)",
-      "link": "Invited talk for [ASCrypto](https://ascrypto.org/2023/). Unrecorded ([slides](https://www.espe.edu.ec/wp-content/uploads/2023/10/MPC-for-Privacy-Preserving-Measurement-Christopher-Patton-ASCrypto-23_compressed.pdf))"
+      "venue": "ASCrypto 2023, co-located with EVENT(ITEM.meta.where.latincrypt,2023)",
+      "link": "[Slides](https://www.espe.edu.ec/wp-content/uploads/2023/10/MPC-for-Privacy-Preserving-Measurement-Christopher-Patton-ASCrypto-23_compressed.pdf)"
     },
     {
       "what": "Standardizing MPC for Privacy-preserving Measurement",
@@ -248,7 +266,7 @@
   ],
   "self":
   {
-    "intro": "I'm a cryptography engineer at [Cloudflare Research](https://research.cloudflare.com/). Most of my work also takes place in the IETF: I contributed to the design of the [Encrypted Client Hello extension for TLS](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/); I participate in the [CFRG research group](https://irtf.org/cfrg); and I'm leading a significant amount of work in the [PPM working group](https://datatracker.ietf.org/group/ppm/about/), which aims to bring MPC to bear on user measurement. I'm also helping with [Cloudflare's post-quantum transition](https://blog.cloudflare.com/post-quantum-cryptography-ga/).",
+    "intro": "I'm a cryptography engineer at [Cloudflare Research](https://research.cloudflare.com/) focused on the last mile of cryptography research. My work ranges from security analysis and protocol design to implementation and deployment. I've spent most of my time at the intersection of privacy and standardization: I'm leading a significant amount of work in the [PPM working group](https://datatracker.ietf.org/group/ppm/about/) at IETF, which aims to bring MPC and other tools to bear on user measurement; and I contributed to the design of the [Encrypted Client Hello extension for TLS](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/). I've also spent some time helping with [Cloudflare's post-quantum transition](https://blog.cloudflare.com/post-quantum-cryptography-ga/).",
     "history": "I finished my PhD in 2020 under [Tom Shrimpton](http://cise.ufl.edu/~teshrim/new-homepage.html) at the University of Florida. My thesis focused on bridging the gap between the proven security of cryptographic protocols and their security in the real world. I began my crypto education with [Phil Rogaway](http://web.cs.ucdavis.edu/~rogaway/) at the University of California, Davis, where I earned my master's and bachelor's. I interned on the Crypto team at Cloudflare (SF) during the summer of 2018. I've done two internships at Google, the first on the Cloud Security team (KIR, 2015) and the second on the Chrome Protector team (MON, 2016).",
     "fun": "I love to run, make music, and drink coffee. My favorite book is Ishmael by Daniel Quinn."
   }
