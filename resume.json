@@ -131,7 +131,7 @@
     {
       "what": "How to write proofs for cryptographic protocols at IETF",
       "venue": "Usable Formal Methods Research Group, IETF 120",
-      "link": "[YouTube](https://youtu.be/xdJm9JgfLaw?si=sGU_fl6zV4IOQCgE&t=4797)"
+      "link": "[YouTube recording](https://youtu.be/xdJm9JgfLaw?si=sGU_fl6zV4IOQCgE&t=4797) and corresponding [writeup](https://cjpatton.net/ietf120-ufmrg-better-proofs.pdf)"
     },
     {
       "what": "Computing on your data with MPC",
@@ -146,27 +146,27 @@
     {
       "what": "Standardizing MPC for Privacy-preserving Measurement",
       "venue": "EVENT(ITEM.meta.where.rwc,2022)",
-      "link": "[YouTube](https://youtu.be/dOAMi_uFv_Y?si=4XdLSOPWNcm9PF4h&t=1677). Please forgive the terrible recording. There was an AV issue during our session, the result of which is that only the Zoom recording survived"
+      "link": "[YouTube recording](https://youtu.be/dOAMi_uFv_Y?si=4XdLSOPWNcm9PF4h&t=1677). Please forgive the terrible recording. There was an AV issue during our session, the result of which is that only the Zoom recording survived"
     },
     {
       "what": "Quantifying the Security Cost of Migrating Protocols to Practice",
       "venue": "EVENT(ITEM.meta.where.crypto,2020)",
-      "link": "[YouTube](https://www.youtube.com/watch?v=AGXE-AFt4is), prerecorded"
+      "link": "[YouTube recording](https://www.youtube.com/watch?v=AGXE-AFt4is)"
     },
     {
       "what": "Interpretation of Provable Security for Cryptographic Practice",
       "venue": "PhD defense, delivered via Zoom",
-      "link": "[YouTube](https://youtu.be/rHf7ssQf77U)"
+      "link": "[YouTube recording](https://youtu.be/rHf7ssQf77U)"
     },
     {
       "what": "Partially specified channels",
       "venue": "EVENT(ITEM.meta.where.ccs,2018)",
-      "link": "[YouTube](https://youtu.be/LBrXgjm73-c)"
+      "link": "[YouTube recording](https://youtu.be/LBrXgjm73-c)"
     },
     {
       "what": "Hedging public-key encryption in the real world",
       "venue": "EVENT(ITEM.meta.where.crypto,2017)",
-      "link": "[YouTube](https://youtu.be/FhIvgnomUy4)"
+      "link": "[YouTube recording](https://youtu.be/FhIvgnomUy4)"
     }
   ],
   "draft":
