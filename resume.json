@@ -177,9 +177,14 @@
       "who": ["R. Barnes", "D. Cook", "C. Patton", "P. Schoppmann"]
     },
     {
-      "what": "Distributed Aggregation Protocol for Privacy Preserving Measurement ",
+      "what": "Distributed Aggregation Protocol for Privacy Preserving Measurement",
       "link": "[draft-ietf-ppm-dap](https://datatracker.ietf.org/doc/draft-ietf-ppm-dap/)",
       "who": ["T. Geoghegan", "C. Patton", "E. Rescorla", "C. Wood"]
+    },
+    {
+      "what": "Task Binding and In-Band Provisioning for DAP",
+      "link": "[draft-ietf-ppm-dap-taskprov](https://datatracker.ietf.org/doc/draft-ietf-ppm-dap-taskprov/)",
+      "who": ["S. Wang", "C. Patton"]
     }
   ],
   "code":
@@ -216,7 +221,9 @@
     [
       "EVENT(ITEM.meta.where.ssr (\"Secure Standardisation Research\"),2020)",
       "EVENT(ITEM.meta.where.ssr,2022)",
-      "EVENT(ITEM.meta.where.ssr,2023)"
+      "EVENT(ITEM.meta.where.ssr,2023)",
+      "EVENT(ITEM.meta.where.ssr,2024)",
+      "EVENT(ITEM.meta.where.pets,2025)"
     ],
     "review":
     {
@@ -225,7 +232,8 @@
         "EVENT(ITEM.meta.where.usenix,2017)",
         "EVENT(ITEM.meta.where.crypto,2019)",
         "EVENT(ITEM.meta.where.crypto,2020)",
-        "EVENT(ITEM.meta.where.ccs,2020)"
+        "EVENT(ITEM.meta.where.ccs,2020)",
+        "EVENT(ITEM.meta.where.ec,2025)"
       ],
       "journal": [
         "TDSC Vol. 15, No. 5"
