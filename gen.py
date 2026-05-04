@@ -1,6 +1,27 @@
-import json
 import re
 import sys
+
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
+
+def load_cv(fn):
+    with open(fn, "rb") as f:
+        cv = tomllib.load(f)
+    _strip_newlines(cv)
+    return cv
+
+def _strip_newlines(obj):
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            obj[k] = _strip_newlines(v)
+    elif isinstance(obj, list):
+        for i, item in enumerate(obj):
+            obj[i] = _strip_newlines(item)
+    elif isinstance(obj, str):
+        return obj.strip().replace('\n', ' ')
+    return obj
 
 LPAR = '('
 RPAR = ')'
@@ -193,7 +214,7 @@ cv_fn = sys.argv[2]       # e.g., resume.json
 template_fn = sys.argv[3] # e.g., t.patton.tex
 out_fn = sys.argv[4]      # e.g., build/patton.tex
 
-cv = json.load(open(cv_fn))
+cv = load_cv(cv_fn)
 I = open(template_fn).read()
 e = expanders[target]
 
