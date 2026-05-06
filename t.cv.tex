@@ -29,39 +29,47 @@
 \makecvtitle
 
 \section{Education}
-\cventry{2016--20}{PhD}{ITEM.meta.inst.uf}{Cryptography}{advised by Tom Shrimpton}{}{}
-\cventry{2013--15}{MS}{ITEM.meta.inst.ucd}{CS}{advised by Nina Amenta}{}{}
-\cventry{2008--13}{BAS}{ITEM.meta.inst.ucd}{CS and German}{}{}{}
-\cvitem{2010--11}{\textit{ITEM.meta.inst.fu}, study abroad.}
+\cventry{2016--20}{PhD}{ <<cv.meta.inst.uf>> }{Cryptography}{advised by Tom Shrimpton}{}{}
+\cventry{2013--15}{MS}{ <<cv.meta.inst.ucd>> }{CS}{advised by Nina Amenta}{}{}
+\cventry{2008--13}{BAS}{ <<cv.meta.inst.ucd>> }{CS and German}{}{}{}
+\cvitem{2010--11}{\textit{ <<cv.meta.inst.fu>> }, study abroad.}
 
 \section{Papers}
-LIST.paper(LIT.venue,LIT.what,,LOR.who,LIT.link,)
+<& for p in cv.paper &>
+\cventry{<<p.venue>>}{<<p.what>>}{}{ <<p.who | ordered>> }{<<p.link>>}{}
+<& endfor &>
 
 \section{Internet-Drafts}
-LIST.draft(,LIT.what,,LOR.who,LIT.link,)
+<& for d in cv.draft &>
+\cventry{}{<<d.what>>}{}{ <<d.who | ordered>> }{<<d.link>>}{}
+<& endfor &>
 
 %\break
 \section{Experience}
-LIST.job(LIT.when,LIT.what,LIT.where,,,LIT.desc)
+<& for j in cv.job &>
+\cventry{<<j.when>>}{<<j.what>>}{<<j.where>>}{}{}{<<j.desc>>}
+<& endfor &>
 
 \section{Service}
 \cvitem{PC}{%
-  ORDERED.service.pc.
+  <<cv.service.pc | ordered>>.
 }\cvitem{Paper review}{%
-  {Conference:} ORDERED.service.review.conf.
+  {Conference:} <<cv.service.review.conf | ordered>>.
 }\cvitem{}{%
-  {Journal:} ORDERED.service.review.journal.
+  {Journal:} <<cv.service.review.journal | ordered>>.
 }
 
 \section{Awards}
 \cvitem{Grants}{%
-  ORDERED.award.grant.
+  <<cv.award.grant | ordered>>.
 }
 \cvitem{Scholarships}{%
-  ORDERED.award.scholarship.
+  <<cv.award.scholarship | ordered>>.
 }
 
 \section{References}
-LIST.ref(--,LIT.who,LIT.where,,\href{mailto:LIT.email}{LIT.email},)
+<& for r in cv.ref &>
+\cventry{--}{<<r.who>>}{<<r.where>>}{}{\href{mailto:<<r.email>>}{<<r.email>>}}{}
+<& endfor &>
 
 \end{document}

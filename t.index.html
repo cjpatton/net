@@ -65,24 +65,36 @@
       </table>
 
       <p>
-        ITEM.self.intro
+        <<cv.self.intro>>
       </p>
 
       <p>
-        ITEM.self.history
+        <<cv.self.history>>
       </p>
 
       <h2>Papers</h2>
-  LIST.paper(    ,LIT.what,(LIT.link),LOR.who,LIT.venue,)
+      <ul><& for p in cv.paper &>
+        <li><b><<p.what>></b><& if p.link &> (<<p.link>>)<& endif &>. <<p.who | ordered>>. <<p.venue>>.</li>
+<&- endfor &>
+      </ul>
 
       <h2>Internet-Drafts</h2>
-  LIST.draft(    ,LIT.what,(LIT.link),LOR.who,,)
+      <ul><& for d in cv.draft &>
+        <li><b><<d.what>></b><& if d.link &> (<<d.link>>)<& endif &>. <<d.who | ordered>>. </li>
+<&- endfor &>
+      </ul>
 
       <h2>Code</h2>
-  LIST.code(    ,LIT.what,(LIT.link),,LIT.desc,)
+      <ul><& for c in cv.code &>
+        <li><b><<c.what>></b><& if c.link &> (<<c.link>>)<& endif &>. <<c.desc>></li>
+<&- endfor &>
+      </ul>
 
       <h2>Talks</h2>
-  LIST.talk(    ,LIT.what,(LIT.venue),,LIT.link.,)
+      <ul><& for t in cv.talk &>
+        <li><b><<t.what>></b> (<<t.venue>>). <<t.link>>.</li>
+<&- endfor &>
+      </ul>
     </div>
   </body>
 </html>

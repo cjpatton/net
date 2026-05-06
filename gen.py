@@ -1,16 +1,20 @@
 import re
 import sys
 
+from jinja2 import Environment, FileSystemLoader
+
 try:
     import tomllib
 except ImportError:
     import tomli as tomllib
+
 
 def load_cv(fn):
     with open(fn, "rb") as f:
         cv = tomllib.load(f)
     _strip_newlines(cv)
     return cv
+
 
 def _strip_newlines(obj):
     if isinstance(obj, dict):
@@ -23,77 +27,10 @@ def _strip_newlines(obj):
         return obj.strip().replace('\n', ' ')
     return obj
 
-LPAR = '('
-RPAR = ')'
-PARSEP = ','
-KEYSEP = '.'
 
-## Regular expressions
-RUNE_re = "([a-z0-9_]+)"
-KEY_re = "(\%s%s)+" % (KEYSEP, RUNE_re)
-
-ITEM_prog = re.compile("ITEM%s" % KEY_re)
-KEY_prog = re.compile(KEY_re)
-LIST_prog = re.compile("LIST%s" % KEY_re)
-LIT_prog = re.compile("LIT%s" % KEY_re)
-LOR_prog = re.compile("LOR%s" % KEY_re)
-ORDERED_prog = re.compile("ORDERED%s" % KEY_re)
-
-## Parsers
-class Err(BaseException):
-    def __init__(self, S):
-        self.S = S
-    def __str__(self):
-        return self.S
-
-def err(S):
-    raise Err(S)
-
-def parseKey(S):
-    # Seek to beginning of key.
-    off = 0
-    while S[off] != KEYSEP:
-        off += 1
-    m = KEY_prog.match(S[off:])
-    key = []
-    if m:
-        idx = off
-        prev = off
-        for c in S[off+1:off+m.end()]+KEYSEP:
-            idx += 1
-            if c == KEYSEP:
-                key.append(S[prev+1:idx])
-                prev = idx
-        return key
-    err("syntax: couldn't parse key")
-
-def parseArgs(S, expectedCount):
-    if S[0] != LPAR:
-        err("syntax: missing left paranthesis")
-    lv = 0
-    idx = 0
-    arg_ends = [1]
-    for c in S:
-        idx += 1
-        if c == LPAR:
-            lv += 1
-        elif c == RPAR:
-            lv -= 1
-        elif c == PARSEP and lv == 1:
-            arg_ends.append(idx)
-        if lv == 0:
-            arg_ends.append(idx)
-            args = []
-            for i in range(len(arg_ends)-1):
-                args.append(S[arg_ends[i]:arg_ends[i+1]-1])
-            if len(args) != expectedCount:
-                err("expected %s arguments, got %s" % (
-                    expectedCount, len(args)))
-            return args, idx
-    err("syntax: missing right paranthesis")
-
-## Expanders
 def ordered(val):
+    if isinstance(val, str):
+        return val
     if len(val) == 0:
         return ''
     elif len(val) == 1:
@@ -107,157 +44,104 @@ def ordered(val):
         expanded += 'and %s' % val[-1]
         return expanded
 
-def get(D, K):
-    if len(K) == 0:
-        return D
-    return get(D.get(K[0]), K[1:])
 
-def processListItemArg(D, arg):
-    # Process list items.
-    for m in reversed(list(LIT_prog.finditer(arg))):
-        key = parseKey(m.group(0))
-        val = get(D, key)
-        if val == None:
-            val = ""
-        arg = arg[:m.start()] + val + arg[m.end():]
-
-    # Process list ordered lists.
-    for m in reversed(list(LOR_prog.finditer(arg))):
-        key = parseKey(m.group(0))
-        val = get(D, key)
-        if val == None:
-            val = ""
-        arg = arg[:m.start()] + ordered(val) + arg[m.end():]
-
-    return arg
+def conference(venue, year):
+    return "%s %s" % (venue, year)
 
 
+MDLINK_RE = re.compile(r'\[([^\]]*)\]\(([^)]*)\)')
 
-# Expander for LaTeX documents. This assumes the following macro is defined:
-# \newcommand{\cvitem}[6]{ ... }
-class TexExpander:
-    def Conference(self, args):
-        if len(args[1]) != 4: # year
-            err("unexpected year length")
-        return "%s %s" % (args[0], args[1])
 
-    def List(self, args, key, D):
-        expanded = ""
-        for val in get(D, key):
-            expanded += "%s\n" % self.ListItem(args, val)
-        return expanded
+def expand_md_links(s, target):
+    if target == 'tex':
+        return MDLINK_RE.sub(r'\\href{\2}{\1}', s)
+    else:
+        return MDLINK_RE.sub(r'<a href="\2" target="_blank">\1</a>', s)
 
-    def ListItem(self, args, D):
-        expanded = '\\cventry'
-        for arg in args:
-            expanded += "{%s}" % processListItemArg(D, arg)
-        return expanded
 
-    def Link(self, text, url):
-        return '\\href{%s}{%s}' % (url, text)
+def resolve_references(node, root=None):
+    """Resolve EVENT(...) and ITEM... references in all string values."""
+    if root is None:
+        root = node
+    if isinstance(node, dict):
+        return {k: resolve_references(v, root) for k, v in node.items()}
+    elif isinstance(node, list):
+        return [resolve_references(item, root) for item in node]
+    elif isinstance(node, str):
+        return _resolve_in_str(node, root)
+    return node
 
-    def Ordered(self, key, D):
-        val = get(D, key)
-        return ordered(val)
 
-    def Post(self, I):
-        return I
+def _resolve_in_str(s, root):
+    """Resolve ITEM... and EVENT(...) macros within a single string."""
+    # First pass: ITEM.key.path
+    while True:
+        m = re.search(r'ITEM\.([a-z0-9_]+(?:\.[a-z0-9_]+)*)', s)
+        if not m:
+            break
+        key = m.group(1).split('.')
+        val = root
+        for k in key:
+            if isinstance(val, dict):
+                val = val.get(k)
+            else:
+                val = None
+                break
+        if isinstance(val, str):
+            s = s[:m.start()] + val + s[m.end():]
+        else:
+            break
+    # Second pass: EVENT(venue, year)
+    while True:
+        m = re.search(r'EVENT\((.+?),(\d{4})\)', s)
+        if not m:
+            break
+        venue_raw = m.group(1).strip()
+        year = m.group(2)
+        venue_raw = _resolve_in_str(venue_raw, root)
+        resolved = conference(venue_raw, year)
+        s = s[:m.start()] + resolved + s[m.end():]
+    return s
 
-# Expander for HTML documents.
-class HtmlExpander:
-    def Conference(self, args):
-        if len(args[1]) != 4: # year
-            err("unexpected year length")
-        return "%s %s" % (args[0], args[1])
 
-    def List(self, args, key, D):
-        # The first argument is interpreted as the tabbing.
-        expanded = "%s<ul>\n" % args[0]
-        for val in get(D, key):
-            expanded += "%s  <li>%s</li>\n" % (
-                args[0], self.ListItem(args[1:], val))
-        expanded += "%s</ul>" % args[0]
-        return expanded
+# Jinja2 environment (module-level so filters/decorators work)
+_env = Environment(
+    loader=FileSystemLoader('.'),
+    block_start_string='<&',
+    block_end_string='&>',
+    variable_start_string='<<',
+    variable_end_string='>>',
+    comment_start_string='<#',
+    comment_end_string='#>',
+    autoescape=False,
+)
+_env.filters['ordered'] = ordered
 
-    def ListItem(self, args, D):
-        x = []
-        for arg in args:
-            x.append(processListItemArg(D, arg))
-        expanded = '' if len(x[0]) == 0 else '<b>%s</b> ' % x[0]
-        expanded += '' if len(x[1]) == 0  else '%s. ' % x[1]
-        expanded += '' if len(x[2]) == 0 else '%s. ' % x[2]
-        expanded += '' if len(x[3]) == 0 else '%s.' % x[3]
-        return expanded
 
-    def Link(self, text, url):
-        return '<a href="%s" target="_blank">%s</a>' % (url, text)
+def main():
+    target = sys.argv[1]
+    cv_fn = sys.argv[2]
+    template_fn = sys.argv[3]
+    out_fn = sys.argv[4]
 
-    def Ordered(self, key, D):
-        val = get(D, key)
-        return ordered(val)
+    cv = load_cv(cv_fn)
+    cv = resolve_references(cv)
 
-    def Post(self, I):
-        # Remove undefined links.
-        I = re.sub(' \(\)', '', I)
-        # Remove double periods.
-        I = re.sub('\.\.', '.', I)
-        return I
+    template = _env.get_template(template_fn)
+    output = template.render(cv=cv, target=target)
 
-expanders = {
-    "tex": TexExpander(),
-    "html": HtmlExpander()
-}
+    # Expand markdown links in the final output
+    output = expand_md_links(output, target)
 
-## Main
-target = sys.argv[1]      # e.g., tex
-cv_fn = sys.argv[2]       # e.g., resume.json
-template_fn = sys.argv[3] # e.g., t.patton.tex
-out_fn = sys.argv[4]      # e.g., build/patton.tex
+    if target == 'html':
+        output = re.sub(r' \(\)', '', output)
+        output = re.sub(r'\.\.', '.', output)
 
-cv = load_cv(cv_fn)
-I = open(template_fn).read()
-e = expanders[target]
+    with open(out_fn, 'w') as f:
+        f.write(output)
+        if not output.endswith('\n'):
+            f.write('\n')
 
-# Expand macros. Because we're not parsing a real grammar and just matching
-# regular expressions, the order of operations is very important. The following
-# items are done first.
-#
-# LIST
-for m in reversed(list(LIST_prog.finditer(I))):
-    key = parseKey(m.group(0))
-    args, n = parseArgs(I[m.end(0):], 6)
-    expanded = e.List(args, key, cv)
-    I = I[:m.start()] + expanded + I[m.end()+n:]
 
-# ORDERED
-for m in reversed(list(ORDERED_prog.finditer(I))):
-    key = parseKey(m.group(0))
-    expanded = e.Ordered(key, cv)
-    I = I[:m.start()] + expanded + I[m.end():]
-
-# Done second.
-#
-# ITEM
-for m in reversed(list(ITEM_prog.finditer(I))):
-    key = parseKey(m.group(0))
-    expanded = get(cv, key)
-    I = I[:m.start()] + expanded + I[m.end():]
-
-# Done third.
-#
-# EVENT
-for m in reversed(list(re.finditer('EVENT', I))):
-    args, n = parseArgs(I[m.end(0):], 2)
-    expanded = e.Conference(args)
-    I = I[:m.start()] + expanded + I[m.end()+n:]
-
-# Markdown-style links
-MDLINK_prog = re.compile("\[([^\]]*)\]\(([^\)]*)\)")
-for m in reversed(list(MDLINK_prog.finditer(I))):
-    expanded = e.Link(m.group(1), m.group(2))
-    I = I[:m.start()] + expanded + I[m.end():]
-
-# Post processing
-I = e.Post(I)
-
-open(out_fn, 'w').write(I)
+if __name__ == '__main__':
+    main()
