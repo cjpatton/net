@@ -1,62 +1,71 @@
-% https://en.wikibooks.org/wiki/LaTeX/Curriculum_Vitae
-
 \documentclass[10pt,usletter,roman]{moderncv}
 
-%\definecolor{thedarkgreen}{RGB}{30,97,0}
+\definecolor{thedarkgreen}{RGB}{45,58,58}
+\definecolor{thesagegreen}{RGB}{74,124,89}
 
-%% ModernCV themes
-\moderncvstyle{casual}
+\moderncvstyle{classic}
 \moderncvcolor{green}
-%\renewcommand{\familydefault}{\sfdefault}
+
+\renewcommand*{\namefont}{\fontsize{24}{30}\mdseries\upshape}
+\renewcommand*{\titlefont}{\fontsize{14}{18}\mdseries\itshape}
+\renewcommand*{\sectionfont}{\fontsize{13}{15}\mdseries\upshape}
+
 \nopagenumbers{}
 \usepackage[utf8]{inputenc}
-\usepackage{times}
-
-% Adjust the page margins
 \usepackage[scale=0.75]{geometry}
 
 % Personal data
 \firstname{Christopher}
 \familyname{Patton}
-\title{Cryptography engineering$\iff$research}
+\title{Cryptography engineer}
 \homepage{cjpatton.net}
 \extrainfo{\href{https://github.com/cjpatton}{github.com/cjpatton}}
 \email{chrispatton+cv@gmail.com}
 \photo[64pt][0.4pt]{public/img/head4}
-%\quote{``Sometimes you gotta get in there to get out there.'' -- Joseph D. Sanders}
 
 \begin{document}
 \makecvtitle
 
-\section{Education}
-\cventry{2016--20}{PhD}{ <<cv.meta.inst.uf>> }{Cryptography}{advised by Tom Shrimpton}{}{}
-\cventry{2013--15}{MS}{ <<cv.meta.inst.ucd>> }{CS}{advised by Nina Amenta}{}{}
-\cventry{2008--13}{BAS}{ <<cv.meta.inst.ucd>> }{CS and German}{}{}{}
-\cvitem{2010--11}{\textit{ <<cv.meta.inst.fu>> }, study abroad.}
-
-\section{Papers}
-<& for p in cv.paper &>
-\cventry{<<p.venue>>}{<<p.what>>}{}{ <<p.who | ordered>> }{<<p.link>>}{}
-<& endfor &>
-
-\section{Internet-Drafts}
-<& for d in cv.draft &>
-\cventry{}{<<d.what>>}{}{ <<d.who | ordered>> }{<<d.link>>}{}
-<& endfor &>
-
-%\break
 \section{Experience}
 <& for j in cv.job &>
 \cventry{<<j.when>>}{<<j.what>>}{<<j.where>>}{}{}{<<j.desc>>}
 <& endfor &>
 
+\section{Education}
+\cventry{2016--20}{PhD}{<<cv.meta.inst.uf>>}{Cryptography}{advised by Tom Shrimpton}{}{}
+\cventry{2013--15}{MS}{<<cv.meta.inst.ucd>>}{CS}{advised by Nina Amenta}{}{}
+\cventry{2008--13}{BAS}{<<cv.meta.inst.ucd>>}{CS and German}{}{}{}
+\cvitem{2010--11}{\textit{<<cv.meta.inst.fu>>}, study abroad.}
+
+\section{Papers}
+<& for p in cv.paper &>
+\cventry{<<p.venue>>}{<<p.what>>}{}{<<p.who | ordered>>}{<<p.link>>}{}
+<& endfor &>
+
+\section{Internet-Drafts}
+<& for d in cv.draft &>
+\cventry{}{<<d.what>>}{}{<<d.who | ordered>>}{<<d.link>>}{}
+<& endfor &>
+
+\section{Code}
+<& for c in cv.code &>
+\cventry{}{<<c.what>>}{}{<<c.link>>}{<<c.desc>>}{}
+<& endfor &>
+
+\section{Talks}
+<& for t in cv.talk &>
+\cventry{}{<<t.what>>}{<<t.venue>>}{}{<<t.link>>}{}
+<& endfor &>
+
 \section{Service}
 \cvitem{PC}{%
   <<cv.service.pc | ordered>>.
-}\cvitem{Paper review}{%
-  {Conference:} <<cv.service.review.conf | ordered>>.
-}\cvitem{}{%
-  {Journal:} <<cv.service.review.journal | ordered>>.
+}
+\cvitem{Paper review}{%
+  \textit{Conference:} <<cv.service.review.conf | ordered>>.
+}
+\cvitem{}{%
+  \textit{Journal:} <<cv.service.review.journal | ordered>>.
 }
 
 \section{Awards}
