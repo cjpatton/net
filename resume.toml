@@ -152,6 +152,11 @@ venue = "EVENT(ITEM.meta.where.crypto,2017)"
 who = ["A. Boldyreva", "C. Patton", "T. Shrimpton"]
 
 [[talk]]
+what = "Mastic: Private Weighted Heavy-Hitters and Attribute-Based Metrics"
+venue = "EVENT(ITEM.meta.where.pets,2025)"
+link = "No recording available"
+
+[[talk]]
 what = "Secure aggregation at IETF"
 venue = "Google Research Conference on Ads Privacy 2025"
 link = "No publc recording available"
