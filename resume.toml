@@ -243,8 +243,8 @@ desc = "A simple protocol for synchronizing clocks with enough accuracy for comm
 
 [service]
 pc = [
-    "EVENT(ITEM.meta.where.rwc,2027)",
-    "EVENT(ITEM.meta.where.pets,2027)",
+    "EVENT(ITEM.meta.where.rwc (Real World Crypto),2027)",
+    "EVENT(ITEM.meta.where.pets (Privacy Enhancing Technologies Symposium),2027)",
     "EVENT(ITEM.meta.where.pets,2026)",
     "EVENT(ITEM.meta.where.pets,2025)",
     'EVENT(ITEM.meta.where.ssr (Secure Standardisation Research),2024)',
