@@ -151,12 +151,12 @@
         </div>
       </header>
 
-      <section class="intro">
+      <section class="intro" id="about">
         <p><<cv.self.intro>></p>
         <p><<cv.self.history>></p>
       </section>
 
-      <section>
+      <section id="papers">
         <h2>Papers</h2>
         <ul><& for p in cv.paper &>
           <li><b><<p.what>></b><& if p.link &> (<<p.link>>)<& endif &>. <<p.who | ordered>>. <<p.venue>>.</li>
@@ -164,7 +164,7 @@
         </ul>
       </section>
 
-      <section>
+      <section id="drafts">
         <h2>Internet-Drafts</h2>
         <ul><& for d in cv.draft &>
           <li><b><<d.what>></b><& if d.link &> (<<d.link>>)<& endif &>. <<d.who | ordered>>.</li>
@@ -172,7 +172,7 @@
         </ul>
       </section>
 
-      <section>
+      <section id="code">
         <h2>Code</h2>
         <ul><& for c in cv.code &>
           <li><b><<c.what>></b><& if c.link &> (<<c.link>>)<& endif &>. <<c.desc>></li>
@@ -180,7 +180,7 @@
         </ul>
       </section>
 
-      <section>
+      <section id="talks">
         <h2>Talks</h2>
         <ul><& for t in cv.talk &>
           <li><b><<t.what>></b> (<<t.venue>>). <<t.link>>.</li>
