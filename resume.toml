@@ -295,9 +295,9 @@ where = "ITEM.meta.inst.jmie"
 
 [self]
 intro = '''
-I'm a cryptography engineer at [Cloudflare
-Research](https://research.cloudflare.com/). I've worked on various privacy
-enhancing technologies ([Privacy Preserving
+I'm a senior research engineer at
+[Cloudflare](https://research.cloudflare.com/) focused on cryptography. I've
+worked on various privacy enhancing technologies ([Privacy Preserving
 Measurement](https://datatracker.ietf.org/doc/draft-irtf-cfrg-vdaf/),
 [Encrypted Client Hello](https://datatracker.ietf.org/doc/rfc9849/)), but these
 days I focus primarily on the post-quantum transition. I'm involved in bringing
