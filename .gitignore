@@ -9,6 +9,5 @@ build/
 .DS_Store
 cv.tex
 node_modules
-package.json
-package-lock.json
+.wrangler/
 resume.json

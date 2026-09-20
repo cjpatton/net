@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cjpatton-net",
+  "account_id": "50c027d4c47ecd030cbe62f150541238",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "*cjpatton.net/*", "zone_name": "cjpatton.net" }
+  ],
+  // Static assets, served straight from the edge without a Worker script.
+  // https://developers.cloudflare.com/workers/static-assets/
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}
