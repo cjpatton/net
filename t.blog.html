@@ -1,0 +1,39 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog &mdash; Christopher Patton</title>
+    <meta name="description" content="Blog of Christopher Patton, a cryptography researcher.">
+    <meta property="og:title" content="Blog &mdash; Christopher Patton">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<<site>>/blog/">
+    <meta property="og:description" content="Blog of Christopher Patton, a cryptography researcher.">
+    <meta property="og:image" content="<<site>>/img/head4.jpg">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <div class="main">
+      <& include "t.blog-header.html" &>
+
+      <section id="blog">
+        <h1 class="page-title">Blog</h1>
+        <& if posts &>
+        <ul class="post-list"><& for p in posts &>
+          <li>
+            <a href="<<p.url>>"><<p.title>></a>
+            <span class="post-date"><time datetime="<<p.date_iso>>"><<p.date_iso>></time></span>
+          </li>
+<&- endfor &>
+        </ul>
+        <& else &>
+        <p>No posts yet.</p>
+        <& endif &>
+      </section>
+
+      <footer>
+        &copy; 2026 Christopher Patton
+      </footer>
+    </div>
+  </body>
+</html>

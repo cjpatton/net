@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><<post.title | e>> &mdash; Christopher Patton</title>
+    <meta name="description" content="<<post.excerpt | e>>">
+    <meta property="og:title" content="<<post.title | e>>">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="<<post.og_url>>">
+    <meta property="og:description" content="<<post.excerpt | e>>">
+    <meta property="og:image" content="<<site>>/img/head4.jpg">
+    <meta property="article:published_time" content="<<post.date_iso>>">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <div class="main">
+      <& include "t.blog-header.html" &>
+
+      <section class="post">
+        <h1 class="page-title"><<post.title>></h1>
+        <p class="post-date"><time datetime="<<post.date_iso>>"><<post.date_pretty>></time></p>
+        <div class="post-content">
+<<post.html>>
+        </div>
+      </section>
+
+      <footer>
+        &copy; 2026 Christopher Patton
+      </footer>
+    </div>
+  </body>
+</html>

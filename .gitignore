@@ -3,7 +3,7 @@ dist
 *.log
 *.out
 *.swp
-*.pdf
+/cv.pdf
 *.pem
 build/
 .DS_Store
@@ -11,3 +11,4 @@ cv.tex
 node_modules
 .wrangler/
 resume.json
+public/

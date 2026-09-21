@@ -1,3 +1,4 @@
+import os
 import re
 import sys
 
@@ -36,17 +37,17 @@ def ordered(val):
     elif len(val) == 1:
         return val[0]
     elif len(val) == 2:
-        return '%s and %s' % (val[0], val[1])
+        return f'{val[0]} and {val[1]}'
     else:
         expanded = ''
         for it in val[:-1]:
-            expanded += '%s, ' % it
-        expanded += 'and %s' % val[-1]
+            expanded += f'{it}, '
+        expanded += f'and {val[-1]}'
         return expanded
 
 
 def conference(venue, year):
-    return "%s %s" % (venue, year)
+    return f"{venue} {year}"
 
 
 MDLINK_RE = re.compile(r'\[([^\]]*)\]\(([^)]*)\)')
@@ -136,6 +137,10 @@ def main():
     if target == 'html':
         output = re.sub(r' \(\)', '', output)
         output = re.sub(r'\.\.', '.', output)
+
+    out_dir = os.path.dirname(out_fn)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
 
     with open(out_fn, 'w') as f:
         f.write(output)
