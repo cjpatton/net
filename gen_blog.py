@@ -4,7 +4,10 @@ Each post is a Markdown file in blog/ named YYYY-MM-DD-short-title.md, where
 the publication date is taken from the file name and the short title from the
 "title" field of the front matter (falling back to the file name). For
 example, blog/2026-09-20-hello-world.md is published at
-/blog/2026-09-20-hello-world and linked from the index at /blog.
+/blog/2026-09-20-hello-world and linked from the index at /blog. A post with
+a "staging" field in its front matter (a hex string encoding 16 random
+bytes) is instead published at /blog/<staging>-<short-title>, with the date
+replaced by the token, and is left out of the index.
 
 LaTeX math is rendered to MathML at build time: $x^2$ for inline math and
 $$x^2$$ for display math. Non-Markdown files in blog/ (images, etc.) are
@@ -183,12 +186,25 @@ def load_posts():
             meta, body = _load_post(os.path.join(BLOG_DIR, fn))
             body, refs = _split_refs(body)
             slug = m.group(4)
-            url = f"/blog/{pub.isoformat()}-{slug}"
+
+            # A staging post is published at an unpredictable URL (the date
+            # replaced by a random token) and left out of the blog index.
+            staging = meta.get("staging")
+            if staging is not None:
+                if not re.fullmatch(r"[0-9a-f]{32}", staging):
+                    raise SystemExit(
+                        f"{fn}: staging must be 32 lowercase hex characters "
+                        "(16 bytes), e.g. openssl rand -hex 16")
+            stem = staging if staging else pub.isoformat()
+
+            url = f"/blog/{stem}-{slug}"
             html = _render_markdown(body, (label for label, _ in refs))
             if refs:
                 html += "\n" + _rewrite_urls(_render_refs(refs))
             posts.append({
                 "slug": slug,
+                "stem": stem,
+                "staging": staging,
                 "url": url,
                 "og_url": SITE + url,
                 "title": meta.get("title", slug.replace("-", " ").title()),
@@ -228,12 +244,15 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
 
     for p in posts:
-        fn = f"{p['date_iso']}-{p['slug']}.html"
+        fn = f"{p['stem']}-{p['slug']}.html"
         write_page("t.post.html", os.path.join(OUT_DIR, fn), post=p, site=SITE)
-        print(f"blog: {p['date_iso']}-{p['slug']}.md -> {fn}")
+        note = " (staging)" if p["staging"] else ""
+        print(f"blog: {p['date_iso']}-{p['slug']}.md -> {fn}{note}")
 
-    write_page("t.blog.html", os.path.join(OUT_DIR, "index.html"), posts=posts, site=SITE)
-    print(f"blog: {len(posts)} post(s), index at {os.path.join(OUT_DIR, 'index.html')}")
+    published = [p for p in posts if not p["staging"]]
+    write_page("t.blog.html", os.path.join(OUT_DIR, "index.html"), posts=published, site=SITE)
+    print(f"blog: {len(published)} post(s) in index, {len(posts) - len(published)} staging, "
+          f"index at {os.path.join(OUT_DIR, 'index.html')}")
 
     copy_assets()
 

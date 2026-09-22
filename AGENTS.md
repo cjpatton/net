@@ -32,6 +32,10 @@ To preview, run `npx wrangler dev` and spot-check `http://localhost:8787/`,
   to `blog/` (e.g. `img/foo.png`), and citations `[BR93]` or `[BR93,Mer87]`
   that link to a trailing `## References` section.
   `blog/2026-09-20-hello-world.md` is a living example of the syntax.
+- An optional `staging:` field (32 lowercase hex chars, 16 random bytes, e.g.
+  `openssl rand -hex 16`) publishes a post at an unpredictable URL (the
+  date segment of the URL replaced by the token) and omits it from the blog
+  index.
 
 ## Deploying
 
