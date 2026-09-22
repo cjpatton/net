@@ -31,6 +31,16 @@ needed on the client: `$x^2$` for inline math and `$$x^2$$` for display math
 copied to the site as-is; refer to them with paths relative to `blog/`,
 e.g. `![alt](img/foo.png)`.
 
+A post can cite the literature by ending with a `## References` section
+listing entries like:
+
+    - [BR93] M. Bellare and P. Rogaway. Random Oracles Are Practical. CCS 1993.
+
+Writing `[BR93]` in the body renders the bracketed label as a link to the
+reference at the bottom of the page. Several works can be cited at once with
+a comma-separated list, like `[BR93,Mer87]`; if any label in the list is
+undefined, the brackets are left as plain text.
+
 ## Deploying
 
 The site is served by a Cloudflare Worker with

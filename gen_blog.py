@@ -31,6 +31,15 @@ POST_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})-([a-z0-9]+(?:-[a-z0-9]+)*)\.md$"
 FRONT_MATTER_RE = re.compile(r"\A---\n(.*?)\n---\n?", re.DOTALL)
 RELATIVE_URL_RE = re.compile(r'(src|href)="(?!/|#|[a-z][a-z0-9+.-]*:)([^"]*)"')
 
+# References. A post may end with a "## References" section listing entries
+# like "- [BR93] M. Bellare and P. Rogaway. Random Oracles Are Practical.
+# CCS 1993." Cite them in the body with "[BR93]" (or a comma-separated list
+# like "[BR93,BR24]", in the spirit of LaTeX's \cite{}), which renders as
+# link(s) to the reference(s) at the bottom of the page.
+REFS_HEADING_RE = re.compile(r"^##\s+References\s*$", re.MULTILINE)
+REFS_ENTRY_RE = re.compile(r"^[-*] \[([A-Za-z0-9._+-]+)\] (.*)$")
+CITE_RE = re.compile(r"\[([A-Za-z0-9._+-]+(?:,\s*[A-Za-z0-9._+-]+)*)\]")
+
 
 def _excerpt(body):
     """Plain-text excerpt from the first paragraph, for meta tags."""
@@ -74,20 +83,90 @@ def _math_block(self, tokens, idx, options, env):
     return latex2mathml(tokens[idx].content, display="block")
 
 
+def _ref_link(state, silent):
+    """Inline rule for citations: [BR93] or [BR93,BR24]."""
+    m = CITE_RE.match(state.src, state.pos)
+    if not m:
+        return False
+    refs = (state.env or {}).get("refs", ())
+    labels = [label.strip() for label in m.group(1).split(",")]
+    if any(label not in refs for label in labels):
+        return False
+    if not silent:
+        token = state.push("ref_link", "", 0)
+        token.content = ",".join(labels)
+    state.pos = m.end()
+    return True
+
+
+def _ref_link_html(self, tokens, idx, options, env):
+    parts = ",".join(
+        f'<a class="ref" href="#ref-{label}">{label}</a>'
+        for label in tokens[idx].content.split(",")
+    )
+    return f"[{parts}]"
+
+
 _md = MarkdownIt("commonmark").use(dollarmath_plugin)
 _md.enable(["table", "strikethrough"])
+_md.inline.ruler.after("link", "ref_link", _ref_link)
 _md.add_render_rule("math_inline", _math_inline)
 _md.add_render_rule("math_block", _math_block)
+_md.add_render_rule("ref_link", _ref_link_html)
 
 
-def _render_markdown(text):
+def _split_refs(body):
+    """Split a trailing "## References" section off of the post body.
+
+    Returns (body, entries), where entries is a list of (label, text). If
+    there is no References section with entries, returns (body, []).
+    """
+    m = None
+    for m in REFS_HEADING_RE.finditer(body):
+        pass
+    if m is None:
+        return body, []
+
+    entries = []
+    label, text = None, ""
+    for line in body[m.end():].split("\n"):
+        em = REFS_ENTRY_RE.match(line)
+        if em:
+            if label:
+                entries.append((label, text))
+            label, text = em.group(1), em.group(2)
+        elif label is not None and line[:1] in (" ", "\t") and line.strip():
+            text += " " + line.strip()    # indented continuation line
+    if label:
+        entries.append((label, text))
+
+    if not entries:
+        return body, []
+    return body[:m.start()], entries
+
+
+def _render_refs(entries):
+    """Render the References section, one anchor per entry."""
+    items = []
+    for label, text in entries:
+        # Rendered without "refs" in env, so labels stay literal here.
+        desc = _md.renderInline(text, {})
+        items.append(f'<li id="ref-{label}"><span class="ref-label">[{label}]</span> {desc}</li>')
+    return '<h2>References</h2>\n<ul class="refs">\n' + "\n".join(items) + "\n</ul>"
+
+
+def _rewrite_urls(html):
+    return RELATIVE_URL_RE.sub(r'\1="/blog/\2"', html)
+
+
+def _render_markdown(text, refs=()):
     """Render Markdown to HTML, including LaTeX math.
 
     Relative links and images are rewritten relative to /blog/, so that
-    they resolve no matter how the URL of the page is written.
+    they resolve no matter how the URL of the page is written. Citations of
+    "refs" labels render as links to the References section.
     """
-    html = _md.render(text)
-    return RELATIVE_URL_RE.sub(r'\1="/blog/\2"', html)
+    return _rewrite_urls(_md.render(text, {"refs": set(refs)}))
 
 
 def load_posts():
@@ -102,8 +181,12 @@ def load_posts():
             except ValueError as e:
                 raise SystemExit(f"{fn}: bad publication date: {e}")
             meta, body = _load_post(os.path.join(BLOG_DIR, fn))
+            body, refs = _split_refs(body)
             slug = m.group(4)
             url = f"/blog/{pub.isoformat()}-{slug}"
+            html = _render_markdown(body, (label for label, _ in refs))
+            if refs:
+                html += "\n" + _rewrite_urls(_render_refs(refs))
             posts.append({
                 "slug": slug,
                 "url": url,
@@ -112,7 +195,7 @@ def load_posts():
                 "date_iso": pub.isoformat(),
                 "date_pretty": f"{pub.day} {pub.strftime('%B')} {pub.year}",
                 "excerpt": meta.get("description") or _excerpt(body),
-                "html": _render_markdown(body),
+                "html": html,
             })
     posts.sort(key=lambda p: (p["date_iso"], p["slug"]), reverse=True)
     return posts

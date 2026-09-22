@@ -272,3 +272,19 @@ footer {
   border-top: 1px solid var(--border);
   margin: 2rem 0;
 }
+
+.post-content ul.refs {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-content ul.refs li {
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
+  font-size: 0.9rem;
+}
+
+.post-content :target {
+  background: var(--green-light);
+  border-radius: 4px;
+}

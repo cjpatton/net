@@ -65,7 +65,18 @@ A cheat sheet for the syntax understood by the build script:
 | `$$x^2$$` | Display math (on its own lines) |
 | `![alt](img/foo.png)` | An image from blog/img/ |
 | `[text](url)` | A link |
+| `[BR93]`, `[BR93,BR24]` | Citation(s) (see below) |
 | `**bold**`, `*italic*` | Bold, italic |
+
+## Citations
+
+Citations to the literature use labels in square brackets, like the random
+oracle model [BR93] or Merkle's signature scheme [Mer87]. Several works can be
+cited at once, in the spirit of LaTeX's \cite{}, like [BR93,Mer87] or
+[Mer87, BR93]. Clicking a citation jumps to the reference at the bottom of the
+page, and the browser's back button returns you to where you were reading.
+Labels are defined by the References section below; if any label is undefined,
+like [BR24] or [BR93,BR24], the brackets stay as plain text.
 
 ## And the rest
 
@@ -83,3 +94,10 @@ An ordered list:
 1. Write the post in Markdown, with LaTeX math between dollar signs.
 2. Run `make` to render the post and update the blog index.
 3. Deploy as usual, e.g. by pushing to `main`.
+
+## References
+
+- [BR93] M. Bellare and P. Rogaway. Random Oracles Are Practical: A Paradigm
+  for Designing Efficient Protocols. CCS 1993.
+- [Mer87] R. C. Merkle. A Digital Signature Based on a Conventional
+  Encryption Function. CRYPTO 1987.
