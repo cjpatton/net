@@ -12,3 +12,4 @@ node_modules
 .wrangler/
 resume.json
 public/
+__pycache__

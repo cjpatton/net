@@ -9,7 +9,9 @@ latincrypt = "Latincrypt"
 ndss = "NDSS"
 pets = "PETS"
 usenix = "Usenix"
+wpes = "WPES"
 cf_sf = "Cloudflare--SF"
+cf_connect = "Cloudflare Connect"
 ssr = "SSR"
 rwc = "RWC"
 goog_mon = "Google--Montréal"
@@ -95,6 +97,12 @@ and I assisted in experiments for the networking lab at UC Davis.
 '''
 
 [[paper]]
+link = "[ia.cr/2025/556](https://eprint.iacr.org/2025/556)"
+what = "Private SCT Auditing, Revisited"
+venue = "EVENT(ITEM.meta.where.wpes,2026)"
+who = ["L. Heimberger", "C. Patton", "B. Westerbaan"]
+
+[[paper]]
 link = "[ia.cr/2024/221](https://eprint.iacr.org/2024/221)"
 what = "Mastic: Private Weighted Heavy-Hitters and Attribute-Based Metrics"
 venue = "EVENT(ITEM.meta.where.pets,2025)"
@@ -150,6 +158,11 @@ link = "[ia.cr/2017/510](https://ia.cr/2017/510)"
 what = "Hedging public-key encryption in the real world"
 venue = "EVENT(ITEM.meta.where.crypto,2017)"
 who = ["A. Boldyreva", "C. Patton", "T. Shrimpton"]
+
+[[talk]]
+what = "Merkle Tree Certificates and the next phase of the WebPKI"
+venue = "EVENT(ITEM.meta.where.cf_connect,2026)"
+link = "[Recording](https://www.cloudflare.com/connect/2026/session/merkle-tree-certificates-and-the-next-phase-of-the-webpki/)"
 
 [[talk]]
 what = "Mastic: Private Weighted Heavy-Hitters and Attribute-Based Metrics"
@@ -260,6 +273,7 @@ conf = [
     "EVENT(ITEM.meta.where.crypto,2020)",
     "EVENT(ITEM.meta.where.ccs,2020)",
     "EVENT(ITEM.meta.where.ec,2025)",
+    "EVENT(ITEM.meta.where.ec,2027)",
 ]
 journal = [
     "TDSC Vol. 15, No. 5",
