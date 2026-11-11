@@ -230,7 +230,7 @@ link = "[draft-ietf-ppm-dap](https://datatracker.ietf.org/doc/draft-ietf-ppm-dap
 who = ["T. Geoghegan", "C. Patton", "E. Rescorla", "C. Wood"]
 
 [[code]]
-what = "Post-quantum anonymous credentials"
+what = "PQ anonymous credentials"
 link = "[vole-mole](https://github.com/cloudflareresearch/vole-mole)"
 desc = "C++ implementations of various post-quantum anonymous credentials in the VOLE-in-the-Head framework."
 
@@ -322,7 +322,7 @@ Measurement](https://datatracker.ietf.org/doc/draft-irtf-cfrg-vdaf/),
 days I focus primarily on the post-quantum transition. I'm involved in bringing
 [Merkle Tree Certificates](https://blog.cloudflare.com/bootstrap-mtc/) to the
 web, developing post-quantum alternatives for "fancy" primitives, such as
-[anonymous credentials](https://blog.cloudflare.com/pq-anonymous-credentials/),
+[anonymous credentials](https://blog.cloudflare.com/vole-mole),
 and various internal initiatives that interact with virtually all deployed
 cryptography at Cloudflare.
 '''
